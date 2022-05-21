@@ -1,0 +1,19 @@
+<nav class="navbar navbar-light bg-light container-fluid">
+  <div>
+    <a class="navbar-brand fs-2" href="/">Just A Bite!</a>
+    <% if (username === "admin") { %>
+      <a class="btn nav__btn" href="/cms">CMS</a>
+    <% } %>
+    </div>
+  <div>
+    <a class="btn nav__btn" href="/draw">Draw</a>
+    <a class="btn nav__btn" href="/menu">Menu</a>
+    <a class="btn nav__btn" href="/faq">FAQ</a>
+    <% if (username) { %>
+      <a class="btn nav__btn" href="/logout">Logout</a>
+    <% } else { %>
+      <a class="btn nav__btn" href="/signup">SignUp</a>  
+      <a class="btn nav__btn" href="/login">Login</a>
+    <% } %>
+    </div>
+</nav>
