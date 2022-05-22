@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const session = require("express-session");
 const flash = require("connect-flash");
@@ -17,7 +19,7 @@ app.use(express.static(`${__dirname}/public`));
 
 app.use(
   session({
-    secret: "process.env.SESSION_SECRET",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
   })
