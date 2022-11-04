@@ -1,4 +1,4 @@
-## [Just a bite](https://ch-bite.herokuapp.com/)
+## [Just a bite](https://ch-just-a-bite.herokuapp.com/)
 
 * Created an authentication and CMS for the owner to release/update/delete products and contents.
 
