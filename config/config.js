@@ -20,8 +20,8 @@ const config = {
     password: "process.env.PROD_PASSWORD",
     database: "process.env.PROD_DATABASE",
     host: "process.env.PROD_HOST",
-    dialect: "pg",
-    use_env_variable: "process.env.DATABASE_URL",
+    dialect: "mysql",
+    use_env_variable: "process.env.CLEARDB_DATABASE_URL",
   },
 };
 module.exports = config;
