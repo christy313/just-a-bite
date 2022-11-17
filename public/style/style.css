@@ -1,9 +1,9 @@
 * {
   box-sizing: border-box;
-} 
+}
 
 body {
-  font-family: "Microsoft JhengHei";
+  font-family: "Microsoft JhengHei, sans-serif";
   min-height: 72vh;
   height: 100%;
   position: relative;
@@ -30,14 +30,14 @@ body {
   transition: background 0.2s ease-in;
 }
 
-.nav__btn:hover{
+.nav__btn:hover {
   background: #ff7286;
   color: white;
 }
 
 .logo {
   color: #489846;
-  font-size: 36px; 
+  font-size: 36px;
   font-family: Questrial;
   font-weight: 300;
 }
@@ -96,7 +96,6 @@ title {
 
 /* header end */
 
-
 /* intro start */
 
 .intro {
@@ -134,7 +133,6 @@ title {
 }
 /* intro end */
 
-
 /* menu start */
 .cart {
   margin-left: 20px;
@@ -158,7 +156,7 @@ title {
 
 .menu__dishes {
   display: flex;
-  justify-content: center;  
+  justify-content: center;
 }
 
 .menu__dish {
@@ -227,7 +225,7 @@ title {
   min-width: 280px;
   color: #3f633c;
   background-color: #f1fff2;
-  border-color:#489846;
+  border-color: #489846;
   border-radius: 3px;
 }
 
@@ -264,7 +262,6 @@ title {
 }
 
 /* menu end */
-
 
 /*comments start*/
 
@@ -315,8 +312,7 @@ title {
 
 /* comment end */
 
-
-.wrapper__member  {
+.wrapper__member {
   max-width: 400px;
   margin: 50px auto;
 }
@@ -328,7 +324,7 @@ footer {
   bottom: 0;
   width: 100%;
   /* min-width: 1440px; */
-  height: 2.5rem; 
+  height: 2.5rem;
 }
 
 .footer__info {
@@ -379,7 +375,6 @@ footer {
 
 /* footer end */
 
-
 /*draw page start */
 
 .draw {
@@ -387,7 +382,8 @@ footer {
   height: 660px;
 }
 
-.draw__content, .prize__result-content {
+.draw__content,
+.prize__result-content {
   background-color: white;
   opacity: 0.9;
   position: relative;
@@ -407,7 +403,9 @@ footer {
   margin-bottom: 3vh;
 }
 
-.draw__schedule, .draw__explanation, .draw__prize {
+.draw__schedule,
+.draw__explanation,
+.draw__prize {
   display: flex;
   font-size: 16px;
   border-bottom: 1px solid #cdcdcd;
@@ -416,7 +414,9 @@ footer {
   padding-bottom: 20px;
 }
 
-.draw__duration, .draw__des, .draw__prize-title {
+.draw__duration,
+.draw__des,
+.draw__prize-title {
   width: 100px;
   font-size: 16px;
   font-weight: 600;
@@ -425,7 +425,9 @@ footer {
   line-height: 1.5em;
 }
 
-.draw__time, .draw__des-content, .draw__prize-content {
+.draw__time,
+.draw__des-content,
+.draw__prize-content {
   font-size: 16px;
   color: #322929;
   line-height: 1.4em;
@@ -465,7 +467,6 @@ footer {
 
 /*draw page end*/
 
-
 /*faq page start*/
 
 .questions {
@@ -485,7 +486,7 @@ footer {
   margin-top: 4vh;
 }
 
-.q-block--hide{
+.q-block--hide {
   height: 4vh;
 }
 
@@ -518,20 +519,20 @@ footer {
   padding: 160px;
 }
 
-@media(min-width: 320px) and (min-height: 653px){
+@media (min-width: 320px) and (min-height: 653px) {
   .navbar .wrapper {
-    margin-bottom: 5vh; 
+    margin-bottom: 5vh;
   }
 }
 
 /* mobile device */
-@media(max-width: 320px) {
+@media (max-width: 320px) {
   .member__submit {
     margin-bottom: 48px;
   }
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .banner > h1 {
     font-size: 48px;
   }
@@ -560,7 +561,8 @@ footer {
     text-align: center;
   }
 
-  .navbar__list li.active, .navbar__list li:hover {
+  .navbar__list li.active,
+  .navbar__list li:hover {
     background: #ff7286;
   }
 
@@ -569,7 +571,10 @@ footer {
     margin-top: 16px;
   }
 
-  .menu, .menu__dishes, .menu__shopping-list, .menu__ad {
+  .menu,
+  .menu__dishes,
+  .menu__shopping-list,
+  .menu__ad {
     flex-direction: column;
   }
 
@@ -604,14 +609,13 @@ footer {
     height: auto;
   }
 
-  .wrapper__member  {
+  .wrapper__member {
     max-width: 425px;
     margin-top: 10px;
   }
 
   .footer__info .wrapper {
     flex-direction: column-reverse;
-    
   }
 
   .footer__address {
@@ -619,7 +623,7 @@ footer {
     margin-top: 16px;
   }
 
-  .footer__brand{
+  .footer__brand {
     text-align: left;
     font-family: Questrial;
     font-weight: 300;
