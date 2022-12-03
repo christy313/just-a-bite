@@ -31,6 +31,10 @@ app.use(
 app.use((req, res, next) => {
   res.locals.username = req.session.username;
   res.locals.errorMessage = req.flash("errorMessage");
+
+  if (!req.session) {
+    return next(new Error("Server error"));
+  }
   next();
 });
 
