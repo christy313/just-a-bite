@@ -1,8 +1,8 @@
 require("dotenv").config();
 
 const express = require("express");
-// const session = require("express-session");
-const session = require("cookie-session");
+const session = require("express-session");
+// const session = require("cookie-session");
 const flash = require("connect-flash");
 const app = express();
 const port = process.env.PORT || 5001;
