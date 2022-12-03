@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const session = require("express-session");
-const MSSQLStore = require("connect-mssql-v2")(session);
+// const MSSQLStore = require("connect-mssql-v2");
 const flash = require("connect-flash");
 const app = express();
 const port = process.env.PORT || 5001;
@@ -23,7 +23,6 @@ app.use(
     secret: "process.env.SESSION_SECRET",
     resave: false,
     saveUninitialized: true,
-    store: new MSSQLStore(),
   })
 );
 
