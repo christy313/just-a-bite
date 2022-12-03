@@ -24,7 +24,7 @@ app.use(
     secret: "process.env.SESSION_SECRET",
     resave: false,
     saveUninitialized: true,
-    store: new MSSQLStore(config, options),
+    store: new MSSQLStore(),
   })
 );
 
