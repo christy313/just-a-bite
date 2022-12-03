@@ -1,5 +1,5 @@
 require("dotenv").config();
-// const config = require("./config/config");
+const config = require("./config/config").default;
 
 const express = require("express");
 const session = require("express-session");
@@ -25,7 +25,7 @@ app.use(
     secret: "process.env.SESSION_SECRET",
     resave: false,
     saveUninitialized: true,
-    store: new MSSQLStore(configFile),
+    store: new MSSQLStore(config),
   })
 );
 
