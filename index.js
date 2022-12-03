@@ -1,4 +1,5 @@
 require("dotenv").config();
+const config = require("./config/config");
 
 const express = require("express");
 const session = require("express-session");
@@ -24,17 +25,13 @@ app.use(
     secret: "process.env.SESSION_SECRET",
     resave: false,
     saveUninitialized: true,
-    store: new MSSQLStore(),
+    store: new MSSQLStore(config),
   })
 );
 
 app.use((req, res, next) => {
   res.locals.username = req.session.username;
   res.locals.errorMessage = req.flash("errorMessage");
-
-  if (!req.session) {
-    return next(new Error("Server error"));
-  }
   next();
 });
 
