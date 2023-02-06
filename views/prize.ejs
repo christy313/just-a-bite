@@ -1,39 +1,29 @@
-<!doctype html>
-  <head>
-    <%- include('template/head') %>
-  </head>
+<!DOCTYPE html>
+<head>
+  <%- include('template/head') %>
+</head>
 <html>
   <body>
     <%- include('template/navbar') %>
     <div class="draw">
       <div class="draw__content">
-        <div class="draw__title">
-          Let's draw for 2022!
-        </div>
+        <div class="draw__title">Let's draw for 2023!</div>
         <div class="draw__schedule">
-          <div class="draw__duration">
-            Date:
-          </div>
-          <div class="draw__time">
-            2022/05/01 - 2022/07/01
-          </div>
+          <div class="draw__duration">Date:</div>
+          <div class="draw__time">2023/09/01 - 2023/10/31</div>
         </div>
         <div class="draw__explanation">
-          <div class="draw__des">
-            Details:
-          </div>
+          <div class="draw__des">Details:</div>
           <div class="draw__des-content">
-            If you spend more than 100 CAD, 
-            you will have the chance to get the below prizes!
+            If you spend more than 100 CAD, you will have the chance to get the
+            below prizes!
           </div>
         </div>
         <div class="draw__prize">
-          <div class="draw__prize-title">
-            Prize:
-          </div>
+          <div class="draw__prize-title">Prize:</div>
           <div class="draw__prize-content">
             <% prizes.forEach(function(prize) { %>
-              <div>❤ <%= `${prize.item}: ${prize.content}` %></div>
+            <div>❤ <%= `${prize.item}: ${prize.content}` %></div>
             <% }) %>
           </div>
         </div>
