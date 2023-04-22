@@ -1,12 +1,12 @@
-## [Just a bite](https://ch-just-a-bite.herokuapp.com/)
+## Just a bite
 
-* Created an authentication and CMS for the owner to release/update/delete products and contents.
+- Created an authentication and CMS for the owner to release/update/delete products and contents.
 
-* Created a draw game with internal API calls and adjustable ratio for the future restaurant campaign.
+- Created a draw game with internal API calls and adjustable ratio for the future restaurant campaign.
 
-* Built a branded website to benefit businesses by increasing brand visibility and recognition.
+- Built a branded website to benefit businesses by increasing brand visibility and recognition.
 
-* Login with username: admin/password: admin in the content management system to see the privilege under admin.
+- Login with username: admin/password: admin in the content management system to see the privilege under admin.
 
 ![](https://imgur.com/cmqYh5s.gif)
 
@@ -68,23 +68,23 @@
 
 ## Technologies
 
-* Express.js
+- Express.js
 
-* Sequelize
+- Sequelize
 
-* MySQL
+- MySQL
 
-* EJS 
+- EJS
 
-* Bootstrap
+- Bootstrap
 
 ## The Difficulties I met
 
-* Prevent duplicate usernames when register
+- Prevent duplicate usernames when register
 
-  * The username in the database should be set to unique so that the error message would be caught in `try...catch`
+  - The username in the database should be set to unique so that the error message would be caught in `try...catch`
 
-* Prevent Cross-site scripting injection in any input field.
+- Prevent Cross-site scripting injection in any input field.
 
 ```js
 // public/script/api.js
@@ -102,7 +102,9 @@ async function drawResult() {
   const result = await getDrawAPI();
   try {
     mainHTML.innerHTML = `
-      <div class="prize__result bg-image" style="background-image:url(${result.url})">
+      <div class="prize__result bg-image" style="background-image:url(${
+        result.url
+      })">
         <div class="text-center prize__result-content">
           <div class="card-body">
             <h1 class="card-text">${escapeHtml(result.item)}</h1>
