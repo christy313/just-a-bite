@@ -3,9 +3,29 @@ dotenv.config();
 
 const express = require("express");
 const session = require("express-session");
+const MySQLStore = require("express-mysql-session")(session);
+const mysql = require("mysql");
 const flash = require("connect-flash");
 const app = express();
 const port = process.env.PORT || 5001;
+
+const dbConfig = {
+  host: process.env.PROD_HOST,
+  user: process.env.PROD_HOST_USER,
+  password: process.env.PROD_PASSWORD,
+  database: process.env.PROD_DATABASE,
+};
+
+const sessionStore = new MySQLStore(dbConfig);
+
+app.use(
+  session({
+    store: sessionStore,
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 const faqController = require("./controllers/faq");
 const menuController = require("./controllers/menu");
@@ -17,14 +37,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(flash());
 app.use(express.static(`${__dirname}/public`));
-
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-  })
-);
 
 app.use((req, res, next) => {
   res.locals.username = req.session.username;
