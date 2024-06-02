@@ -7,6 +7,22 @@ const flash = require("connect-flash");
 const app = express();
 const port = process.env.PORT || 5001;
 
+const { Sequelize } = require("sequelize");
+
+const sequelize = new Sequelize({
+  dialect: "mysql",
+  host: process.env.PROD_HOST,
+  username: process.env.PROD_USERNAME,
+  password: process.env.PROD_PASSWORD,
+  database: process.env.PROD_DATABASE,
+  pool: {
+    max: 100000,
+    min: 0,
+    acquire: 30000,
+    idle: 10000,
+  },
+});
+
 const faqController = require("./controllers/faq");
 const menuController = require("./controllers/menu");
 const prizeController = require("./controllers/prize");
