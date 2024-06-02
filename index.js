@@ -2,12 +2,11 @@ require("dotenv").config();
 
 const express = require("express");
 const session = require("express-session");
-// const MSSQLStore = require("connect-mssql-v2");
+const { Sequelize } = require("sequelize");
+const MySQLStore = require("express-mysql-session")(session);
 const flash = require("connect-flash");
 const app = express();
 const port = process.env.PORT || 5001;
-
-const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize({
   dialect: "mysql",
@@ -23,10 +22,27 @@ const sequelize = new Sequelize({
   },
 });
 
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Database connection has been established successfully.");
+  })
+  .catch((err) => {
+    console.error("Unable to connect to the database:", err);
+  });
+
 const faqController = require("./controllers/faq");
 const menuController = require("./controllers/menu");
 const prizeController = require("./controllers/prize");
 const userController = require("./controllers/user");
+
+const sessionStore = new MySQLStore({
+  host: process.env.PROD_HOST,
+  port: 3306,
+  user: process.env.PROD_USERNAME,
+  password: process.env.PROD_PASSWORD,
+  database: process.env.PROD_DATABASE,
+});
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
@@ -36,9 +52,10 @@ app.use(express.static(`${__dirname}/public`));
 
 app.use(
   session({
-    secret: "process.env.SESSION_SECRET",
+    secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    store: sessionStore,
   })
 );
 
