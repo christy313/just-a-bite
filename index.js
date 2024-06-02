@@ -4,14 +4,13 @@ dotenv.config();
 const express = require("express");
 const session = require("express-session");
 const MySQLStore = require("express-mysql-session")(session);
-const mysql = require("mysql");
 const flash = require("connect-flash");
 const app = express();
 const port = process.env.PORT || 5001;
 
 const dbConfig = {
   host: process.env.PROD_HOST,
-  user: process.env.PROD_HOST_USER,
+  user: process.env.PROD_USERNAME,
   password: process.env.PROD_PASSWORD,
   database: process.env.PROD_DATABASE,
 };
