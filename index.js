@@ -15,7 +15,7 @@ const sequelize = new Sequelize({
   password: process.env.PROD_PASSWORD,
   database: process.env.PROD_DATABASE,
   pool: {
-    max: 100000,
+    max: 10,
     min: 0,
     acquire: 30000,
     idle: 10000,
@@ -42,6 +42,11 @@ const sessionStore = new MySQLStore({
   user: process.env.PROD_USERNAME,
   password: process.env.PROD_PASSWORD,
   database: process.env.PROD_DATABASE,
+  checkExpirationInterval: 900000,
+  expiration: 86400000,
+  createDatabaseTable: true,
+  connectionLimit: 5,
+  endConnectionOnClose: true,
 });
 
 app.set("view engine", "ejs");
