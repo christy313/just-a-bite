@@ -1,53 +1,15 @@
-const dotenv = require("dotenv").config();
+require("dotenv").config();
 
 const express = require("express");
 const session = require("express-session");
-const { Sequelize } = require("sequelize");
-const MySQLStore = require("express-mysql-session")(session);
 const flash = require("connect-flash");
 const app = express();
 const port = process.env.PORT || 5001;
-
-const sequelize = new Sequelize({
-  dialect: "mysql",
-  host: process.env.PROD_HOST,
-  username: process.env.PROD_USERNAME,
-  password: process.env.PROD_PASSWORD,
-  database: process.env.PROD_DATABASE,
-  pool: {
-    max: 100000,
-    min: 0,
-    acquire: 30000,
-    idle: 10000,
-  },
-});
-
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log("Database connection has been established successfully.");
-  })
-  .catch((err) => {
-    console.error("Unable to connect to the database:", err);
-  });
 
 const faqController = require("./controllers/faq");
 const menuController = require("./controllers/menu");
 const prizeController = require("./controllers/prize");
 const userController = require("./controllers/user");
-
-const sessionStore = new MySQLStore({
-  host: process.env.PROD_HOST,
-  port: 3306,
-  user: process.env.PROD_USERNAME,
-  password: process.env.PROD_PASSWORD,
-  database: process.env.PROD_DATABASE,
-  checkExpirationInterval: 900000,
-  expiration: 86400000,
-  createDatabaseTable: true,
-  connectionLimit: 5,
-  endConnectionOnClose: true,
-});
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
@@ -60,7 +22,6 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-    store: sessionStore,
   })
 );
 
