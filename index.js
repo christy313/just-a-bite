@@ -14,12 +14,12 @@ const sequelize = new Sequelize({
   username: process.env.PROD_USERNAME,
   password: process.env.PROD_PASSWORD,
   database: process.env.PROD_DATABASE,
-  pool: {
-    max: 10,
-    min: 0,
-    acquire: 30000,
-    idle: 10000,
-  },
+  // pool: {
+  //   max: 10,
+  //   min: 0,
+  //   acquire: 30000,
+  //   idle: 10000,
+  // },
 });
 
 sequelize
