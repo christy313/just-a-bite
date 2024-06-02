@@ -27,7 +27,8 @@ async function getDrawAPI() {
 async function drawResult() {
   const result = await getDrawAPI();
   try {
-    mainHTML.innerHTML = `
+    if (result.url) {
+      mainHTML.innerHTML = `
       <div class="prize__result bg-image" style="background-image:url(${escapeHtml(
         result.url
       )})">
@@ -40,6 +41,9 @@ async function drawResult() {
         </div>
       </div>
     `;
+    } else {
+      mainHTML.innerHTML = "<p>Prize URL not available</p>";
+    }
   } catch (err) {
     return console.log(`Error: ${result.error} & ${result.message}`);
   }
