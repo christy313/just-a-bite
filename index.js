@@ -8,12 +8,16 @@ const flash = require("connect-flash");
 const app = express();
 const port = process.env.PORT || 5001;
 
+const CLEARDB_DATABASE_URL = process.env.CLEARDB_DATABASE_URL || "";
+const dbConfig = new URL(CLEARDB_DATABASE_URL);
+const [username, password] = dbConfig.auth.split(":");
+
 const sequelize = new Sequelize({
   dialect: "mysql",
-  host: process.env.PROD_HOST,
-  username: process.env.PROD_USERNAME,
-  password: process.env.PROD_PASSWORD,
-  database: process.env.PROD_DATABASE,
+  host: dbConfig.hostname,
+  username: username,
+  password: password,
+  database: dbConfig.pathname.slice(1),
   pool: {
     max: 100000,
     min: 0,
@@ -37,11 +41,11 @@ const prizeController = require("./controllers/prize");
 const userController = require("./controllers/user");
 
 const sessionStore = new MySQLStore({
-  host: process.env.PROD_HOST,
-  port: 3306,
-  user: process.env.PROD_USERNAME,
-  password: process.env.PROD_PASSWORD,
-  database: process.env.PROD_DATABASE,
+  host: dbConfig.hostname,
+  port: dbConfig.port || 3306,
+  user: username,
+  password: password,
+  database: dbConfig.pathname.slice(1),
 });
 
 app.set("view engine", "ejs");
