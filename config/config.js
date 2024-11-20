@@ -7,7 +7,7 @@ const config = {
     database: process.env.PROD_DATABASE,
     host: process.env.PROD_HOST,
     dialect: "mysql",
-    use_env_variable: process.env.JAWSDB_URL,
+    use_env_variable: process.env.DATABASE_URL,
   },
 };
 module.exports = config;
